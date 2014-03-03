@@ -19,17 +19,17 @@ var loadAndStart = function() {
 		
 		startServer(canvas);
 		var pressed = false;
-		setInterval(function(){
+		setTimeout(function(){
 			if (!pressed) {
 			self.nes.keyboard.keyDown({keyCode: 13, preventDefault: function(){}});
 			console.log('Press');
 			} else {
 			
 			self.nes.keyboard.keyUp({keyCode: 13, preventDefault: function(){}});
-			console.log('Release');
+			    console.log('Starting bot');
 			}
 			pressed = !pressed;
-		}, 1000);
+		}, 2000);
 	});
 }
 
@@ -38,10 +38,14 @@ var startServer = function(canvas) {
     
    	res.writeHead(200, { 'Content-Type': 'text/html' });
        	res.end(''
-           + '<meta http-equiv="refresh" content="1;" />'
+           + '<meta http-equiv="refresh" content="0.1;" />'
            + '<img src="' + canvas.toDataURL() + '" />');
    	}).listen(3000);
    	console.log('Server started on port 3000');
 }
 
 loadAndStart();
+
+startBot = function(nes) {
+	
+}
